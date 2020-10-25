@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup as bs
 import requests
-
+import csv
+import pandas as pd
 
 url = "https://store.steampowered.com/specials#p=0&tab=NewReleases"
 
@@ -18,6 +19,7 @@ prices = []
 for i in newprices:
     nprices = i.string
     prices.append(nprices)
+
 k = 2 
 res = prices[:len(prices)-k]
 
@@ -25,4 +27,3 @@ res = prices[:len(prices)-k]
 dict = {"Name":games,"Prices":res}
 df = pd.DataFrame(dict)
 df.to_csv("SteamGamesWithPrices.csv")
-

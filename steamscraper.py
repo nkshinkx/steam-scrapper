@@ -18,10 +18,11 @@ prices = []
 for i in newprices:
     nprices = i.string
     prices.append(nprices)
+k = 2 
+res = prices[:len(prices)-k]
 
-def gameinfo(games , prices):
-    info = [",".join(pair) for pair in zip(games,prices)]
-    return info
-    
-s= gameinfo(games,prices)
-print(s)
+
+dict = {"Name":games,"Prices":res}
+df = pd.DataFrame(dict)
+df.to_csv("SteamGamesWithPrices.csv")
+
